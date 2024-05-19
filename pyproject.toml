@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "mlops"
+version = "0.1.0"
+description = ""
+authors = ["Anna Beketova <anna.beketova.ml@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+scikit-learn = "^1.4.2"
+jupyter = "^1.0.0"
+pyarrow = "^16.1.0"
+fastparquet = "^2024.2.0"
+pandas = "^2.2.2"
+seaborn = "^0.13.2"
+numpy = "^1.26.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
