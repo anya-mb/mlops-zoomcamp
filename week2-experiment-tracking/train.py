@@ -5,10 +5,15 @@ import click
 import mlflow
 
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_squared_error, root_mean_squared_error
+from sklearn.metrics import root_mean_squared_error
+
+from hyperopt import fmin, tpe, hp, STATUS_OK
+from hyperopt.pyll import scope
 
 mlflow.set_tracking_uri("sqlite:///mlflow.db")
 mlflow.set_experiment("nyc-green-taxi-prediction")
+
+mlflow.autolog()
 
 def load_pickle(filename: str):
     with open(filename, "rb") as f_in:
