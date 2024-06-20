@@ -41,7 +41,7 @@ def main():
 
     parser = argparse.ArgumentParser(description="Predict trip durations.")
     parser.add_argument('--year', type=int, default=2023, help='Year of the trip data (default: 2023)')
-    parser.add_argument('--month', type=int, default=4, help='Month of the trip data (default: 4)')
+    parser.add_argument('--month', type=int, default=5, help='Month of the trip data (default: 4)')
     
     args = parser.parse_args()
 
@@ -50,6 +50,10 @@ def main():
 
     if (year == 2023) and (month == 4):
         data_path = 'data/yellow_tripdata_2023-04.parquet'
+    elif (year == 2023) and (month == 5):
+        data_path = 'data/yellow_tripdata_2023-05.parquet'
+    elif (year == 2023) and (month == 3):
+        data_path = 'data/yellow_tripdata_2023-03.parquet'
     else:
         print("Not implemented")
 
