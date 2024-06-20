@@ -15,7 +15,27 @@ def predict(features):
     X = dv.transform(features)
     preds = model.predict(X)
 
-    return preds 
+    return float(preds[0])
 
+
+app = Flask('duration-prediction')
+
+@app.route('/predict', methods=['POST'])
 def predict_endpoint():
-    
+    ride = request.get_json()
+    print(f"{ride=}")
+
+    features = prepare_features(ride)
+    print(f"{features=}")
+    pred = predict(features)
+    print(f"{pred=}")
+
+    result = {
+        "duration": pred
+    }
+    print(f"{result=}")
+
+    return jsonify(result)
+
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0', port=9696)
