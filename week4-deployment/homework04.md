@@ -60,6 +60,8 @@ Now let's turn the notebook into a script.
 
 Which command you need to execute for that?
 
+Answer: ```jupyter nbconvert --to script starter.ipynb  ```
+
 
 ## Q4. Virtual environment
 
@@ -72,7 +74,11 @@ After installing the libraries, pipenv creates two files: `Pipfile`
 and `Pipfile.lock`. The `Pipfile.lock` file keeps the hashes of the
 dependencies we use for the virtual env.
 
+```pipenv install scikit-learn=1.5.0 flask --python=3.10.13```
+
 What's the first hash for the Scikit-Learn dependency?
+
+Answer: "057b991ac64b3e75c9c04b5f9395eaf19a6179244c089afdebaad98264bff37c"
 
 
 ## Q5. Parametrize the script
