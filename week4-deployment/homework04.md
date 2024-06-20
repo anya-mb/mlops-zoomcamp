@@ -74,7 +74,7 @@ After installing the libraries, pipenv creates two files: `Pipfile`
 and `Pipfile.lock`. The `Pipfile.lock` file keeps the hashes of the
 dependencies we use for the virtual env.
 
-```pipenv install scikit-learn=1.5.0 flask --python=3.10.13```
+```pipenv install scikit-learn==1.5.0 flask --python=3.10.13```
 
 What's the first hash for the Scikit-Learn dependency?
 
@@ -91,7 +91,7 @@ Run the script for April 2023.
 What's the mean predicted duration? 
 
 * 7.29
-* 14.29
+* 14.29 + 
 * 21.29
 * 28.29
 
