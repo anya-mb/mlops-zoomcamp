@@ -12,7 +12,7 @@ What is the shape of the downloaded data? How many rows are there?
 
 * 72044
 * 78537 
-* 57457
+* 57457 +
 * 54396
 
 
@@ -24,6 +24,9 @@ Hint: explore evidently metric `ColumnQuantileMetric` (from `evidently.metrics i
 
 What metric did you choose?
 
+Answer: ColumnQuantileMetric(column_name='trip_distance', quantile=0.9),
+ColumnCorrelationsMetric(column_name='prediction')
+
 
 ## Q3. Monitoring
 
@@ -33,7 +36,7 @@ What is the maximum value of metric `quantile = 0.5` on the `"fare_amount"` colu
 
 * 10
 * 12.5
-* 14.2
+* 14.2 + 
 * 14.8
 
 
