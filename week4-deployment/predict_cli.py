@@ -1,9 +1,10 @@
 import pickle
-import sklearn
-from flask import Flask, request, jsonify
 import numpy as np
 import pandas as pd
 import argparse
+import requests
+from io import BytesIO
+
 
 with open('model.bin', 'rb') as f_in:
     dv, model = pickle.load(f_in)
@@ -24,8 +25,13 @@ def predict(features):
 
 categorical = ['PULocationID', 'DOLocationID']
 
-def read_data(filename):
-    df = pd.read_parquet(filename)
+def read_data(url):
+    response = requests.get(url)
+    response.raise_for_status()  # Raises an HTTPError for bad responses
+
+    file_content = BytesIO(response.content)
+
+    df = pd.read_parquet(file_content)
     
     df['duration'] = df.tpep_dropoff_datetime - df.tpep_pickup_datetime
     df['duration'] = df.duration.dt.total_seconds() / 60
@@ -48,16 +54,7 @@ def main():
     year = args.year
     month = args.month
 
-    if (year == 2023) and (month == 4):
-        data_path = 'data/yellow_tripdata_2023-04.parquet'
-    elif (year == 2023) and (month == 5):
-        data_path = 'data/yellow_tripdata_2023-05.parquet'
-    elif (year == 2023) and (month == 3):
-        data_path = 'data/yellow_tripdata_2023-03.parquet'
-    else:
-        print("Not implemented")
-
-    df = read_data(data_path)
+    df = read_data(f'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{year}-{month:02}.parquet')
 
     dicts = df[categorical].to_dict(orient='records')
     X_val = dv.transform(dicts)

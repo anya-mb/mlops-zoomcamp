@@ -1,3 +1,11 @@
+```
+pipenv install
+```
+
+```
+pipenv shell
+```
+
 
 ```bash
 gunicorn --bind=0.0.0.0:9696 predict:app
@@ -13,3 +21,11 @@ docker build -t ride-duration-prediction-service:v1 .
 docker run -it --rm -p 9696:9696 ride-duration-prediction-service:v1
 ```
 
+```
+docker run -it --rm --platform linux/amd64 ride-duration-prediction-service:v1
+```
+
+
+interactive docker
+
+docker run -it --rm --platform linux/amd64 ride-duration-prediction-service:v1 /bin/bash
